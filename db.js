@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const dbURL =
-  "mongodb+srv://georgelook2800:hm82we63@cluster0.wsh3nhc.mongodb.net/";
+require("dotenv").config();
+
+const dbURL = process.env.MONGO_URL;
 
 function connectTodb() {
   mongoose
@@ -11,4 +12,4 @@ function connectTodb() {
     .catch((err) => console.log(err));
 }
 
-module.exports = {connectTodb}
+module.exports = { connectTodb };

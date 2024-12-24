@@ -16,17 +16,16 @@ router.post("/addItem", async (req, res) => {
     involved: data.involved,
     today: data.today,
   });
-  if (item) res.json(item);
+  res.send('item created')
 });
 
 router.delete("/deleteItem", async (req, res) => {
   let id = req.body;
-  console.log(id.id);
+  console.log(id.desc);
+  
   
   let response = await List.deleteOne({_id: id.id});
-  console.log('item deleted with id',id.id);
-  
-  res.send(response)
+  res.send('item deleted')
 
 });
 router.put("/updateItem", async (req, res) => {

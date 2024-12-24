@@ -16,7 +16,7 @@ router.post("/createPerson", async (req, res) => {
 
 router.put("/updateAll", async (req, res) => {
   const allPeople = req.body.data.updatedPeople;
-  // console.log(data);
+  console.log(allPeople);
   for (let index = 0; index < allPeople.length; index++) {
     const person = allPeople[index];
     try {
@@ -33,19 +33,21 @@ router.put("/updateAll", async (req, res) => {
         }
       );
       console.log('updated');
+      // const all
       
-    } catch {
-      console.log('Error updating');
+    } catch(err) {
+      console.log('Error updating',err);
       
     }
     
 
   }
+  res.send('updated all')
 });
 router.put("/reset", async (req, res) => {
   // console.log(data);
   const allPeople = await People.find({});
-  console.log(allPeople);
+  // console.log(allPeople);
   
   for (let index = 0; index < allPeople.length; index++) {
     const person = allPeople[index];
@@ -62,7 +64,7 @@ router.put("/reset", async (req, res) => {
           toVarun: 0,
         }
       );
-      console.log('reseted');
+      // console.log('reseted');
       
     } catch {
       console.log('Error updating');
@@ -71,7 +73,7 @@ router.put("/reset", async (req, res) => {
     
 
   }
-  res.end();
+  res.send("resetted");
 });
 
 router.delete("/deleteAll", async (req, res) => {
